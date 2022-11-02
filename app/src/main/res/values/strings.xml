@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Adivinando palabras</string>
+    <string name="start">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+</resources>
