@@ -6,7 +6,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +18,9 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
     char[] caracteres = palabraNueva.toCharArray();
     public char guiones[] = new char[caracteres.length];
     public boolean[] comprobar = new boolean[caracteres.length];
-
+    String nuevaP;
+    TextView palabra;
 
 
     @Override
@@ -63,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void mostrarNuevaPalabra() {
-        TextView palabra = (TextView) findViewById(R.id.palabra);
-        String nuevaP = "";
+        palabra = (TextView) findViewById(R.id.palabra);
+        nuevaP = "";
         if (comprobar.toString().isEmpty()){
             cargaBuleanos();
         }else {
