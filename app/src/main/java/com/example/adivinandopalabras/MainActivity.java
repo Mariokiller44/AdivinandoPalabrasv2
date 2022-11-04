@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
+                                cambiarPalabra();
                             }
                         })
                         .setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
@@ -100,6 +100,18 @@ public class MainActivity extends AppCompatActivity {
         }
         mostrarPalabra = (TextView)findViewById(R.id.palabra);
         mostrarPalabra.setText(palabra);
+    }
+
+    public void cambiarPalabra() {
+        p.setNumIntentos(5);
+        p.setPalabra("");
+        p.setLetrasDisponibles(new char[]{});
+        p.setPalabraSeleccionada("");
+        p.getLetrasDisponibles();
+        p.setPosicionesOcupadas(new boolean[p.getPalabraSeleccionada().length()]);
+        p.getPalabraSeleccionada();
+        mostrarIntentos();
+        mostrarPalabra();
     }
 
     public void adivinar(View v){
