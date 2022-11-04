@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
                             dialog.cancel();
                         }
                     });
+            builder.create();
+            builder.show();
             p.setNumIntentos(5);
         }
         mostrarIntentos= (TextView) findViewById(R.id.intentos);
@@ -117,9 +119,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cambiarPalabra(View v){
+          p.setNumIntentos(5);
           p.setPalabra("");
+          p.setLetrasDisponibles(new char[]{});
           p.setPalabraSeleccionada("");
+          p.getLetrasDisponibles();
+          p.setPosicionesOcupadas(new boolean[p.getPalabraSeleccionada().length()]);
           p.getPalabraSeleccionada();
+          mostrarIntentos();
           mostrarPalabra();
     }
 

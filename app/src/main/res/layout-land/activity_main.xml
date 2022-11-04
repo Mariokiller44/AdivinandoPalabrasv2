@@ -147,7 +147,7 @@
 
         android:onClick="cambiarPalabra"
 
-        android:text="+"
+        android:text="Nueva Palabra"
         android:textColorLink="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/palabra"
         app:layout_constraintStart_toStartOf="parent"
