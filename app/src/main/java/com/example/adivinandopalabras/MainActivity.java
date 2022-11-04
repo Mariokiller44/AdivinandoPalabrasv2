@@ -5,6 +5,7 @@ import static android.widget.TextView.BufferType.NORMAL;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -24,7 +25,7 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
-    public String[] palabras = {"Memoria", "Inteligencia", "Capacidad"};
+ /*   public String[] palabras = {"Memoria", "Inteligencia", "Capacidad"};
     int intentos = 5;
     int posi = (int) Math.floor(Math.random() * palabras.length);
     String palabraNueva = palabras[posi];
@@ -33,16 +34,97 @@ public class MainActivity extends AppCompatActivity {
     public boolean[] comprobar = new boolean[caracteres.length];
     String nuevaP;
     TextView palabra;
-
+*/
+    Partida p = new Partida();
+    TextView mostrarPalabra;
+    TextView mostrarIntentos;
+    Context contexto = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mostrarJuego();
+  //      mostrarJuego();
+          mostrarIntentos();
+          mostrarPalabra();
     }
 
-    public void mostrarJuego() {
+    public void mostrarIntentos(){
+        int intentos = p.getNumIntentos();
+        String palabraCorrecta = p.getPalabraSeleccionada();
+        if (p.finPartida(intentos)==true){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Mala Suerte")
+                    .setMessage("Has fallado; la palabra era: "+palabraCorrecta)
+                    .setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+            p.setNumIntentos(5);
+        }
+        mostrarIntentos= (TextView) findViewById(R.id.intentos);
+        mostrarIntentos.setText("Intentos: "+intentos);
+//
+    }
+
+    public void mostrarPalabra(){
+        String palabra = p.getPalabra();
+        if(p.finPartida(palabra)==true){
+                AlertDialog.Builder builder= new AlertDialog.Builder(this);
+                builder.setTitle("Enhorabuena")
+                        .setMessage("Has acertado la palabra; felicitaciones!")
+                        .setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .setNegativeButton("CANCELAR", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                builder.create();
+                builder.show();
+        }
+        mostrarPalabra = (TextView)findViewById(R.id.palabra);
+        mostrarPalabra.setText(palabra);
+    }
+
+    public void adivinar(View v){
+          TextView letras =(TextView) findViewById(R.id.letra);
+          if (letras.length()==0){
+              Toast.makeText(this,"Introduzca letra",Toast.LENGTH_SHORT).show();
+          }else {
+              char letra = letras.getText().charAt(0);
+              p.adivinar(letra);
+              letras.setText("");
+              int intentos = p.getNumIntentos();
+              String palabraSeleccionada = p.getPalabraSeleccionada();
+              String palabra = p.getPalabra();
+              mostrarIntentos();
+              mostrarPalabra();
+          }
+    }
+
+    public void cambiarPalabra(View v){
+          p.setPalabra("");
+          p.setPalabraSeleccionada("");
+          p.getPalabraSeleccionada();
+          mostrarPalabra();
+    }
+
+
+/*    public void mostrarJuego() {
         mostrarIntentos();
         mostrarNuevaPalabra();
     }
@@ -167,5 +249,5 @@ public class MainActivity extends AppCompatActivity {
             salida=true;
         }
         return salida;
-    }
+    }*/
 }
