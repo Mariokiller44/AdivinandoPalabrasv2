@@ -2,14 +2,5 @@
     <string name="app_name">Adivinando palabras</string>
     <string name="start">Aceptar</string>
     <string name="cancel">Cancelar</string>
-
-    <string-array name="listaPalabras">
-        <item>Inteligencia</item>
-        <item>Capacidad</item>
-        <item>Memoria</item>
-        <item>Velocidad</item>
-        <item>Fuerza</item>
-        <item>Ritmo</item>
-        <item>Agilidad</item>
-    </string-array>
+    <string name="insercionCompletada">Insercion completada</string>
 </resources>

@@ -102,13 +102,13 @@
 
         android:layout_height="42dp"
 
-        android:layout_marginBottom="90dp"
-
-        android:layout_marginEnd="16dp"
-
         android:layout_marginStart="8dp"
 
         android:layout_marginTop="16dp"
+
+        android:layout_marginEnd="16dp"
+
+        android:layout_marginBottom="90dp"
 
         android:textAlignment="textEnd"
 
@@ -146,13 +146,11 @@
         android:layout_marginBottom="39dp"
 
         android:onClick="cambiarPalabra"
-
         android:text="Nueva Palabra"
         android:textColorLink="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/palabra"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
