@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/verPalabra"
+        android:title="Ver Palabra"
+        />
+    <item android:id="@+id/aniadirNuevaPalabra"
+        android:title="Agregar nueva palabra" />
+    <item android:id="@+id/MuestraListaPalabras"
+        android:title="Mostrar Palabras" />
+    <item android:id="@+id/salir"
+        android:title="Salir" />
+</menu>
